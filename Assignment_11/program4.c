@@ -17,7 +17,7 @@ void Pattern(int iNo)
     }
     for(iCnt = 1; iCnt <= iNo; iCnt++)
     {
-        printf("#\t%d\t*\t",iCnt);
+        printf("#\t%d\t*\t", iCnt);
     }
 }
 
