@@ -9,6 +9,11 @@ Output  :   4   8   12  16  20
 void MultipleDisplay(int iNo)
 {
     int iCnt = 0;
+    // updater
+    if(iNo < 0)
+    {
+        iNo = -iNo;
+    }
     for(iCnt = 1; iCnt <= 5; iCnt++)
     {
         printf("%d\t", iCnt * iNo);

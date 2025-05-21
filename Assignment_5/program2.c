@@ -9,6 +9,11 @@ Output  :   1   2   3   4   5   6   7   8
 void Display(int iNo)
 {
     int iCnt = 0;
+    // updater
+    if(iNo < 0)
+    {
+        iNo = -iNo;
+    }
     for(iCnt = 1; iCnt <= iNo; iCnt++)
     {
         printf("%d\t", iCnt);
@@ -23,7 +28,7 @@ int main()
     scanf("%d", &iValue);
 
     Display(iValue);
-    
+
     return 0;
 }
 

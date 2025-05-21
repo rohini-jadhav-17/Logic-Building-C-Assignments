@@ -34,3 +34,7 @@ int main()
 
     return 0;
 }
+
+// * Time Complexity : O(N)
+// * N is a natural number
+// * Where N >= 0 and N <= Infinity
