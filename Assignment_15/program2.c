@@ -2,22 +2,29 @@
 
 /*
 Input   :   iRow = 4    iCol = 4
-Output  :   1   2   3   4
-            2   3   4   5
-            3   4   5   6
-            4   5   6   7
+Output  :   *   *   *   *
+            *   *   *   #
+            *   *   #   #
+            *   #   #   #
 */
 #include<stdio.h>
 
 void Pattern(int iRow, int iCol)
 {
-    int i = 0, j = 0, iNo = 0;
+    int i = 0, j = 0;
 
-    for(i = 1, iNo = 1; i <= iRow; i++)
+    for(i = 1; i <= iRow; i++)
     {
-        for(j = 1, iNo = i; j <= iCol; j++, iNo++)
+        for(j = iCol; j >= 1; j--)
         {
-            printf("%d\t", iNo);
+            if(i <= j)
+            {
+                printf("*\t");
+            }
+            else
+            {
+                printf("#\t");
+            }
         }
         printf("\n");
     }
