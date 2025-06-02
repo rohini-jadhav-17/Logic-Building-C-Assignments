@@ -24,7 +24,7 @@ void Display(int Arr[], int iLength)
 
 int main()
 {
-    int iSize = 0, iRet = 0, iCnt = 0;
+    int iSize = 0, iCnt = 0;
     int *ptr = NULL;
 
     printf("Enter the size of elements :\n");
