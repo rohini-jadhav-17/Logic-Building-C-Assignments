@@ -1,45 +1,40 @@
-// !Accept N numbers from the user and accept one another number as No, return the frequency of No from it.
+// !Accept N numbers from the user and return product of all odd elements.
 
 /*
 Input   :   N : 6
-            No : 66
-            Elements : 85 66 3 66 93 88
-Output  :   2
+            Elements : 15 66 3 76 10 88
+Output  :   45
             
 Input   :   N : 6
-            No : 12
-            Elements : 85 11 3 80 11 88
+            Elements : 44 66 72 76 10 88
 Output  :   0
 */
 
 #include<stdio.h>
 #include<stdlib.h>
 
-int Frequency(int Arr[], int iLength, int iNo)
+int Product(int Arr[], int iLength)
 {
-    int iCnt = 0, count = 0;
+    int iCnt = 0, iProduct = 1;
 
     for(iCnt = 0; iCnt < iLength; iCnt++)
     {
-        if(Arr[iCnt] == iNo)
+        if((Arr[iCnt] % 2) != 0)
         {
-            count++;
+            iProduct = Arr[iCnt] * iProduct;
         }
     }
 
-    return count;
+    return iProduct;
 }
 
 int main()
 {
-    int iSize = 0, iValue = 0, iRet = 0, iCnt = 0;
+    int iSize = 0, iCnt = 0, iRet = 0;
     int *ptr = NULL;
 
     printf("Enter the size of elements :\n");
     scanf("%d", &iSize);
-
-    printf("Enter the number :\n");
-    scanf("%d", &iValue);
 
     ptr = (int *)malloc(iSize * sizeof(int));
 
@@ -49,16 +44,24 @@ int main()
         return -1;
     }
 
-    printf("Enter the elements :");
+    printf("Enter the elements :\n");
 
     for(iCnt = 0; iCnt < iSize; iCnt++)
     {
+        printf("Enter Element : %d\n", iCnt + 1);
         scanf("%d", &ptr[iCnt]);
     }
     
-    iRet = Frequency(ptr, iSize, iValue);
+    iRet = Product(ptr, iSize);
 
-    printf("%d", iRet);
+    if(iRet == 1)
+    {
+        printf("Product is 0");
+    }
+    else
+    {
+        printf("Product is %d", iRet);
+    }
 
     free(ptr);
 

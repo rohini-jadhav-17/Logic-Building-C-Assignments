@@ -1,38 +1,41 @@
-// !Accept N numbers from the user and accept one another number as No, return the frequency of No from it.
+// !Accept N numbers from the user and accept one another number as No, return index of last occurence of that No.
 
 /*
 Input   :   N : 6
             No : 66
             Elements : 85 66 3 66 93 88
-Output  :   2
+Output  :   3
             
 Input   :   N : 6
-            No : 12
-            Elements : 85 11 3 80 11 88
-Output  :   0
+            No : 93
+            Elements : 85 66 3 66 93 88
+Output  :   4
 */
 
 #include<stdio.h>
 #include<stdlib.h>
 
-int Frequency(int Arr[], int iLength, int iNo)
-{
-    int iCnt = 0, count = 0;
+#define INDEX_ERR -1
 
-    for(iCnt = 0; iCnt < iLength; iCnt++)
+int LastOcc(int Arr[], int iLength, int iNo)
+{
+    int iCnt = 0, index = INDEX_ERR;
+
+    for(iCnt = iLength; iCnt > -1; iCnt--)
     {
         if(Arr[iCnt] == iNo)
         {
-            count++;
+            index = iCnt;
+            break;
         }
     }
 
-    return count;
+    return index;
 }
 
 int main()
 {
-    int iSize = 0, iValue = 0, iRet = 0, iCnt = 0;
+    int iSize = 0, iValue = 0, iCnt = 0, iRet = 0;
     int *ptr = NULL;
 
     printf("Enter the size of elements :\n");
@@ -49,16 +52,24 @@ int main()
         return -1;
     }
 
-    printf("Enter the elements :");
+    printf("Enter the elements :\n");
 
     for(iCnt = 0; iCnt < iSize; iCnt++)
     {
+        printf("Enter Element : %d\n", iCnt + 1);
         scanf("%d", &ptr[iCnt]);
     }
     
-    iRet = Frequency(ptr, iSize, iValue);
+    iRet = LastOcc(ptr, iSize, iValue);
 
-    printf("%d", iRet);
+    if(iRet == INDEX_ERR)
+    {
+        printf("There is no such number");
+    }
+    else
+    {
+        printf("Last occurence of number is %d", iRet);
+    }
 
     free(ptr);
 

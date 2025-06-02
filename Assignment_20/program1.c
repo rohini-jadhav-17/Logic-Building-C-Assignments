@@ -1,38 +1,41 @@
-// !Accept N numbers from the user and accept one another number as No, return the frequency of No from it.
+// !Accept N numbers from the user and accept one another number as No, check whether No is present or not.
 
 /*
 Input   :   N : 6
             No : 66
             Elements : 85 66 3 66 93 88
-Output  :   2
+Output  :   TRUE
             
 Input   :   N : 6
             No : 12
             Elements : 85 11 3 80 11 88
-Output  :   0
+Output  :   FALSE
 */
 
 #include<stdio.h>
 #include<stdlib.h>
+#include<stdbool.h>
 
-int Frequency(int Arr[], int iLength, int iNo)
+bool Check(int Arr[], int iLength, int iNo)
 {
-    int iCnt = 0, count = 0;
+    int iCnt = 0;
+    bool bFlag = false;
 
     for(iCnt = 0; iCnt < iLength; iCnt++)
     {
         if(Arr[iCnt] == iNo)
         {
-            count++;
+            bFlag = true;
         }
     }
 
-    return count;
+    return bFlag;
 }
 
 int main()
 {
-    int iSize = 0, iValue = 0, iRet = 0, iCnt = 0;
+    int iSize = 0, iValue = 0, iCnt = 0;
+    bool bRet = false;
     int *ptr = NULL;
 
     printf("Enter the size of elements :\n");
@@ -49,16 +52,24 @@ int main()
         return -1;
     }
 
-    printf("Enter the elements :");
+    printf("Enter the elements :\n");
 
     for(iCnt = 0; iCnt < iSize; iCnt++)
     {
+        printf("Enter Element : %d\n", iCnt + 1);
         scanf("%d", &ptr[iCnt]);
     }
     
-    iRet = Frequency(ptr, iSize, iValue);
+    bRet = Check(ptr, iSize, iValue);
 
-    printf("%d", iRet);
+    if(bRet == true)
+    {
+        printf("%d is present", iValue);
+    }
+    else
+    {
+        printf("%d is not present", iValue);
+    }
 
     free(ptr);
 
