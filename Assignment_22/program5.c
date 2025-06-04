@@ -9,7 +9,6 @@ Output  :   Your exam at 10.30 AM
 */
 
 #include<stdio.h>
-#include<stdlib.h>
 #include<stdbool.h>
 
 void DisplaySchedule(char ch)

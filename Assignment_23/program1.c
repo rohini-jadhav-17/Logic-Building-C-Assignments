@@ -1,22 +1,13 @@
-// !Accept Character from user and check whether it is digit or not (0-9).
-
-/*
-Input   :   7
-Output  :   TRUE
-            
-Input   :   d
-Output  :   FALSE
-*/
+// !Write a program which displays ASCII table. Table contains symbol, Decimal, Hexadecimal and Octal representation of every member from 0 to 255.
 
 #include<stdio.h>
-#include<stdbool.h>
 
-bool CheckDigit(char ch)
+bool CheckAlpha(char ch)
 {
     int iCnt = 0;
     bool bFlag = false;
     
-    if((ch >= '0' && ch <= '9'))
+    if((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))
     {
         bFlag = true;
     }
@@ -36,15 +27,15 @@ int main()
     printf("Enter the character :\n");
     scanf("%c", &cValue);
         
-    bRet = CheckDigit(cValue);
+    bRet = CheckAlpha(cValue);
 
     if(bRet == true)
     {
-        printf("It is Digit.");
+        printf("It is Character.");
     }
     else
     {
-        printf("It is not a Digit.");
+        printf("It is not a Character.");
     }
 
     return 0;
