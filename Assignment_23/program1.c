@@ -2,41 +2,30 @@
 
 #include<stdio.h>
 
-bool CheckAlpha(char ch)
+void DisplayASCII()
 {
-    int iCnt = 0;
-    bool bFlag = false;
-    
-    if((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))
-    {
-        bFlag = true;
-    }
-    else
-    {
-        bFlag = false;
-    }
+    int iSymbol = 0, iCnt = 0;
 
-    return bFlag;
+    printf("**************************************\n");
+    printf("Symbol\tDecimal\tHexadecimal\tOctal\n");
+    printf("**************************************\n");
+    for(iCnt = 0; iCnt <= 255; iCnt++, iSymbol++)
+    {
+        printf("%c\t", iSymbol);
+        printf("%d\t", iSymbol);
+        printf("0X%X\t\t", iSymbol);
+        printf("0%o\n", iSymbol);
+    }    
 }
 
 int main()
 {
-    char cValue = '\0';
-    bool bRet = false;
-
-    printf("Enter the character :\n");
-    scanf("%c", &cValue);
-        
-    bRet = CheckAlpha(cValue);
-
-    if(bRet == true)
-    {
-        printf("It is Character.");
-    }
-    else
-    {
-        printf("It is not a Character.");
-    }
+    DisplayASCII();
 
     return 0;
 }
+
+
+// * Time Complexity : O(N)
+// * N is a natural number
+// * Where N >= 0 and N <= Infinity
