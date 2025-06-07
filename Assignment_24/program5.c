@@ -22,9 +22,9 @@ void DisplayReverse(char *str)
         iCount++;
         str++;
     }
-    
+    str--;
     // for reverse displaying purpose
-    for(iCnt = iCount; iCnt > -1; iCnt--, str--)
+    for(iCnt = iCount; iCnt > 0; iCnt--, str--)
     {
         printf("%c", *str);
     }
