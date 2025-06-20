@@ -22,7 +22,6 @@ int main()
     if(fd == -1)
     {
         printf("Unable to open the file.");
-        return -1;
     }
     else
     {
