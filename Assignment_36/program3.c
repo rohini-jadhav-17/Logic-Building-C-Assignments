@@ -1,11 +1,10 @@
-//! Write a program which displays all elements which are prime from singly linear linked list.
+//! Write a program which display product of all digits of all element from singly linear linked list. (Dont consider 0)
 /*
-Input LinkedList : |11|->|20|->|17|->|41|->|22|->|89|
-Output : 11     17      41      89
+Input LinkedList : |11|->|20|->|32|->|41|
+Output : |1|->|2|->|6|->|4|
 */
 #include<stdio.h>
 #include<stdlib.h>
-#include<stdbool.h>
 
 struct node
 {
@@ -35,27 +34,27 @@ void InsertFirst(PPNODE first, int no)
         *first = newn;
     }
 }
-void DisplayPrime(PNODE first)
+void DisplayProduct(PNODE first)
 {
-    int iCnt = 0;
-    bool bFlag = false;
+    int iDigit = 0, iProd = 1;
 
     while(first != NULL)
     {
-        for(iCnt = 2; iCnt <= (first->data)/2; iCnt++)
+        while(first->data != 0)
         {
-            if((first->data) % iCnt == 0)     //means it is factor - not prime
+            //remainder
+            iDigit = (first->data) % 10;
+            first->data = (first->data) / 10;
+
+            if(iDigit != 0)
             {
-                bFlag = true;
-                break;
+                iProd = iProd * iDigit;
             }
         }
-        if(bFlag == false){
-            printf("%d \t",first->data);
-        }
-
+        printf("%d \t", iProd);
         first = first->next;
-        bFlag = false;
+        //reset iProd
+        iProd = 1;
     }
 }
 
@@ -63,14 +62,12 @@ int main()
 {
     PNODE head = NULL;
    
-    InsertFirst(&head, 89);
-    InsertFirst(&head, 22);
     InsertFirst(&head, 41);
-    InsertFirst(&head, 17);
+    InsertFirst(&head, 32);
     InsertFirst(&head, 20);
     InsertFirst(&head, 11);
 
-    DisplayPrime(head);
+    DisplayProduct(head);
     
     return 0;
 }

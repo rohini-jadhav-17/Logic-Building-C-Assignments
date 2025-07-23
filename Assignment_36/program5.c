@@ -1,11 +1,10 @@
-//! Write a program which displays all elements which are prime from singly linear linked list.
+//! Write a program which display Largest digits of all element from singly linear linked list
 /*
-Input LinkedList : |11|->|20|->|17|->|41|->|22|->|89|
-Output : 11     17      41      89
+Input LinkedList : |11|->|250|->|532|->|419|
+Output : |1|->|5|->|5|->|9|
 */
 #include<stdio.h>
 #include<stdlib.h>
-#include<stdbool.h>
 
 struct node
 {
@@ -35,27 +34,29 @@ void InsertFirst(PPNODE first, int no)
         *first = newn;
     }
 }
-void DisplayPrime(PNODE first)
+void DisplayLarge(PNODE first)
 {
-    int iCnt = 0;
-    bool bFlag = false;
+    int iDigit = 0, iLarge = 0;
 
     while(first != NULL)
     {
-        for(iCnt = 2; iCnt <= (first->data)/2; iCnt++)
-        {
-            if((first->data) % iCnt == 0)     //means it is factor - not prime
-            {
-                bFlag = true;
-                break;
-            }
-        }
-        if(bFlag == false){
-            printf("%d \t",first->data);
-        }
+        //store first compring digit
+        iLarge = (first->data) % 10;
 
+        while(first->data != 0)
+        {
+            //remainder
+            iDigit = (first->data) % 10;
+            first->data = (first->data) / 10;
+
+            //if stored digit is smaller than iDigit replace
+            if(iLarge < iDigit)
+            {
+                iLarge = iDigit;
+            }            
+        }
+        printf("%d \t", iLarge);
         first = first->next;
-        bFlag = false;
     }
 }
 
@@ -63,14 +64,12 @@ int main()
 {
     PNODE head = NULL;
    
-    InsertFirst(&head, 89);
-    InsertFirst(&head, 22);
-    InsertFirst(&head, 41);
-    InsertFirst(&head, 17);
-    InsertFirst(&head, 20);
+    InsertFirst(&head, 419);
+    InsertFirst(&head, 532);
+    InsertFirst(&head, 250);
     InsertFirst(&head, 11);
 
-    DisplayPrime(head);
+    DisplayLarge(head);
     
     return 0;
 }

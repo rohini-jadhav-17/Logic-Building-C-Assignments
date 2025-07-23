@@ -72,6 +72,6 @@ int main()
     return 0;
 }
 
-// * Time Complexity : O(N^2)
-// * N is a natural number
-// * Where N >= 0 and N <= Infinity
+// * Time Complexity : O(N*M)
+// * N, M is a natural number
+// * Where N,M >= 0 and N,M <= Infinity
