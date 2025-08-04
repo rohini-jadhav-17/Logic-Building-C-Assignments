@@ -1,4 +1,4 @@
-//! Write a program which accept matrix from user and swap the contents of consecutive rows.
+//! Write a program which accept matrix from user and reverse the contents of each row.
 /*
 Input :
     3   2   5   9
@@ -6,35 +6,26 @@ Input :
     8   4   1   9
     3   9   7   5
 Output: 
-    4   3   2   2
-    3   2   5   9
-    3   9   7   5
-    8   4   1   9    
+    9   5   2   3
+    2   2   3   4
+    9   1   4   8
+    5   7   9   3    
 */
 
 #include<stdio.h>
 #include<stdlib.h>
 
-void SwapRows(int** arr, int iRow, int iCol)
+void ReverseRows(int** arr, int iRow, int iCol)
 {
-    int i = 0, j = 0, temp = 0, iRownew = 0;
+    int i = 0, j = 0, temp = 0;
 
-    if(iRow % 2 != 0)
+    for(i = 0; i < iRow; i++)
     {
-        iRownew = iRow - 1;
-    }
-    else
-    {
-        iRownew = iRow;
-    }
-
-    for(i = 0; i < iRownew; i = i+2)
-    {
-        for(j = 0; j < iCol; j++)
+        for(j = 0; j < iCol/2; j++)
         {
             temp = arr[i][j];
-            arr[i][j] = arr[i+1][j];
-            arr[i+1][j] = temp;
+            arr[i][j] = arr[i][iCol-1-j];
+            arr[i][iCol-1-j] = temp;
         }
     }
 }
@@ -75,9 +66,9 @@ int main()
         printf("\n");
     }
     
-    SwapRows(ptr, iRow, iCol);
+    ReverseRows(ptr, iRow, iCol);
 
-    printf("Swapped elements are : \n");
+    printf("Reverse Rows in Matrix are : \n");
     for(i = 0; i < iRow; i++)
     {
         for(j = 0; j < iCol; j++)
@@ -86,6 +77,6 @@ int main()
         }
         printf("\n");
     }
-
+    
     return 0;
 }
