@@ -4,3 +4,12 @@ This repository contains C programs based on different topics like Problems on N
 
 # Assignment 30 - 33
   Problems on Bit Manipulation
+
+# Assignment 38 - 39
+  Problems on Generic programming
+
+# Assignment 40 - 43
+  Problems on Recursion
+
+# Assignment 44 - 45
+  Problems on Matrix
